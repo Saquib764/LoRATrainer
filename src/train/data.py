@@ -65,8 +65,8 @@ class CartoonDataset(Dataset):
         }
 
         # Resize the image
-        condition_img = condition_img.convert("RGB")
-        target_image = target_image.convert("RGB")
+        condition_img = condition_img.resize((self.target_size, self.target_size)).convert("RGB")
+        target_image = target_image.resize((self.target_size, self.target_size)).convert("RGB")
 
         blank = Image.new("RGB", (2*self.target_size + 10, self.target_size), (255, 255, 255))
 

@@ -13,14 +13,14 @@ train:
   save_interval: 1000
   sample_interval: 100
   max_steps: 45000
-  gradient_checkpointing: false
+  gradient_checkpointing: true
   save_path: "runs"
 
   model_type: "cartoon"
   dataset:
     type: "cartoon"
-    target_size: 640
-    image_size: 640
+    target_size: 768
+    image_size: 768
     padding: 0
     drop_text_prob: 0.2
     drop_image_prob: 0.0
