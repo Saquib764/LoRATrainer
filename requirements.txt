@@ -1,0 +1,8 @@
+transformers
+diffusers
+peft
+opencv-python
+protobuf
+sentencepiece
+jupyter
+torchao
