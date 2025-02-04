@@ -8,7 +8,8 @@ import time
 from datasets import load_dataset
 
 from .data import (
-    CartoonDataset
+    CartoonDataset,
+    RoomDataset
 )
 from .model import LoRAModel
 from .callbacks import TrainingCallback
@@ -65,6 +66,17 @@ def main():
     if training_config["dataset"]["type"] == "cartoon":
         dataset = load_dataset("saquiboye/oye-cartoon", split="train")
         dataset = CartoonDataset(
+            dataset,
+            target_size=training_config["dataset"]["target_size"],
+            image_size=training_config["dataset"]["image_size"],
+            padding=training_config["dataset"]["padding"],
+            model_type=training_config["model_type"],
+            drop_text_prob=training_config["dataset"]["drop_text_prob"],
+            drop_image_prob=training_config["dataset"]["drop_image_prob"],
+        )
+    elif training_config["dataset"]["type"] == "incontext_room":
+        dataset = load_dataset("saquiboye/empty-room", split="train")
+        dataset = RoomDataset(
             dataset,
             target_size=training_config["dataset"]["target_size"],
             image_size=training_config["dataset"]["image_size"],
