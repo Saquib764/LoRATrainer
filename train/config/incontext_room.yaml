@@ -20,7 +20,7 @@ train:
   dataset:
     type: "incontext_room"
     target_size: 512
-    image_size: 1024
+    image_size: 512
     padding: 0
     drop_text_prob: 0.0
     drop_image_prob: 0.0
