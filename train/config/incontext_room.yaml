@@ -19,7 +19,7 @@ train:
   model_type: "incontext_room"
   dataset:
     type: "incontext_room"
-    target_size: 1024
+    target_size: 512
     image_size: 1024
     padding: 0
     drop_text_prob: 0.2

@@ -140,7 +140,7 @@ class RoomDataset(Dataset):
         image1 = image1.resize((self.target_size, self.target_size)).convert("RGB")
         image2 = image2.resize((self.target_size, self.target_size)).convert("RGB")
 
-        blank = Image.new("RGB", (2*self.target_size + 16, self.target_size), (255, 255, 255))
+        blank = Image.new("RGB", (2*self.target_size + 16, self.target_size), (0, 0, 0))
 
         blank.paste(image1, (0, 0))
         blank.paste(image2, (self.target_size + 16, 0))

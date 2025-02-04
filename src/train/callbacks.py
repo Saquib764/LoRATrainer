@@ -96,7 +96,7 @@ class TrainingCallback(L.Callback):
         model_type="super_resolution",
     ):
         # TODO: change this two variables to parameters
-        target_size = trainer.training_config["dataset"]["target_size"]
+        image_size = trainer.training_config["dataset"]["image_size"]
 
         generator = torch.Generator(device=pl_module.device)
         generator.manual_seed(42)
@@ -115,8 +115,8 @@ class TrainingCallback(L.Callback):
         for i, prompt in enumerate(test_list):
             res = pl_module.flux_pipe(
                 prompt=prompt,
-                height=target_size + 16,
-                width=2*target_size,
+                height=image_size,
+                width=2*image_size + 16,
                 generator=generator
             )
             # res = generate(
