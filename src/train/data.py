@@ -134,16 +134,17 @@ class RoomDataset(Dataset):
         image1_description = data['image1_description']
         image2_description = data['image2_description']
 
-
+        target_sizes = [1024, 768, 512]
+        target_size = random.choice(target_sizes)
 
         # Resize the image
-        image1 = image1.resize((self.target_size, self.target_size)).convert("RGB")
-        image2 = image2.resize((self.target_size, self.target_size)).convert("RGB")
+        image1 = image1.resize((target_size, target_size)).convert("RGB")
+        image2 = image2.resize((target_size, target_size)).convert("RGB")
 
-        blank = Image.new("RGB", (2*self.target_size + 16, self.target_size), (0, 0, 0))
+        blank = Image.new("RGB", (2*target_size + 16, target_size), (0, 0, 0))
 
         blank.paste(image1, (0, 0))
-        blank.paste(image2, (self.target_size + 16, 0))
+        blank.paste(image2, (target_size + 16, 0))
 
         target_image = blank
 
@@ -152,13 +153,8 @@ class RoomDataset(Dataset):
 
         # Randomly drop text or image
         drop_text = random.random() < self.drop_text_prob
-        drop_image = random.random() < self.drop_image_prob
         if drop_text:
             description = ""
-        if drop_image:
-            image1 = Image.new(
-                "RGB", (self.condition_size, self.condition_size), (0, 0, 0)
-            )
 
 
         return {
