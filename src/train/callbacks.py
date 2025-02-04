@@ -105,6 +105,8 @@ class TrainingCallback(L.Callback):
 
         if model_type == "cartoon":
             test_list.append("A cartoon character in a white background. He is looking right, and running.")
+        elif model_type == "incontext_room":
+            test_list.append("Layout- two image of a room side by side. Left: An empty room; Right: A room with a bed;")
         else:
             raise NotImplementedError
 
