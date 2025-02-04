@@ -148,7 +148,7 @@ class RoomDataset(Dataset):
         target_image = blank
 
         # Process datum to create description
-        description = f"Layout- two image of a room side by side. Left: {image1_description}; Right: {image2_description};"
+        description = f"two image of the same room side by side, in the same angle, separated by a black verticle line. Left: {image1_description}; Right: {image2_description};"
 
         # Randomly drop text or image
         drop_text = random.random() < self.drop_text_prob
