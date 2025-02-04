@@ -115,8 +115,8 @@ class TrainingCallback(L.Callback):
         for i, prompt in enumerate(test_list):
             res = pl_module.flux_pipe(
                 prompt=prompt,
-                height=target_size,
-                width=target_size,
+                height=target_size + 16,
+                width=2*target_size,
                 generator=generator
             )
             # res = generate(
